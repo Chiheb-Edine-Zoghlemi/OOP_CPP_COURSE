@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Player.hpp"
+#include <cstring>
 using namespace std;
 
 void displayMenu()
@@ -35,6 +36,7 @@ Player createPlayer(int i)
 }
 bool isWinner(Player players[], int playersNumber)
 {
+    Player winner;
     int deadPlayers = 0;
     for (int i = 0; i < playersNumber; i++)
     {
@@ -42,9 +44,17 @@ bool isWinner(Player players[], int playersNumber)
         {
             deadPlayers++;
         }
+        else
+        {
+            winner = players[i];
+        }
     }
     if (deadPlayers == playersNumber - 1)
     {
+        string cmd = "figlet -c -f standard 'WINNER IS " + winner.getName() + "'";
+        char char_array[cmd.length() + 1];
+        strcpy(char_array, cmd.c_str());
+        system(char_array);
         return true;
     }
     return false;
@@ -58,14 +68,27 @@ void twoPlayers_Mode()
     p2 = createPlayer(1);
     p1.setEnemy(p2);
     p2.setEnemy(p1);
-    cout << p1.getEnemy() << endl;
+    //cout << p1.getEnemy() << endl;
     int round = 1;
+
     while (true)
     {
-        cout << "<< Round " << round << " >>" << endl;
-        if (isWinner)
+        Player players[2] = {p1, p2};
+        cout << " \n<< Round " << round << " >>\n " << endl;
+        if (isWinner(players, 2))
         {
             break;
+        }
+        else
+        {
+            if (round % 2 == 0)
+            {
+                p1.chooseAction();
+            }
+            else
+            {
+                p2.chooseAction();
+            }
         }
         round++;
     }
@@ -115,22 +138,39 @@ void multiPlayers_Mode()
         players[i] = createPlayer(i);
     }
     int round = 1;
+    bool done;
     while (true)
     {
-        cout << "<< Round " << round << " >>" << endl;
-        displayPlayer(players, players_number);
-        if (isWinner(players, players_number))
+
+        if (done)
         {
             break;
         }
-        round++;
+        else
+        {
+            for (int i = 0; i < players_number; i++)
+            {
+                if (isWinner(players, players_number))
+                {
+                    done = true;
+                    break;
+                }
+                else
+                {
+                    displayPlayer(players, players_number);
+                    cout << "\n << Round " << round << " >>\n " << endl;
+                    players[i].chooseAction();
+                    round++;
+                }
+            }
+        }
     }
 }
 
 int main()
 {
     //printf('\e[31m');
-    system(" sudo apt install figlet && figlet -c -f standard 'Death Match'");
+    system("  figlet -c -f standard 'Death Match'");
     //printf('\e[0m');
     displayMenu();
     int choice;

@@ -130,7 +130,7 @@ bool Player::isDead()
 {
     if (score <= 0)
     {
-        cout << "The Player " << name << " is Dead :(" << endl;
+        cout << "The Player " << name << " is Dead 👻" << endl;
         return true;
     }
     return false;

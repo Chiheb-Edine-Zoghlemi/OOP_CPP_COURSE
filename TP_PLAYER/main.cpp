@@ -59,40 +59,6 @@ bool isWinner(Player players[], int playersNumber)
     }
     return false;
 }
-void twoPlayers_Mode()
-{
-    Player p1, p2;
-    system(" figlet -c -f bubble 'GAME STARTED'");
-    p1 = createPlayer(0);
-
-    p2 = createPlayer(1);
-    p1.setEnemy(p2);
-    p2.setEnemy(p1);
-    //cout << p1.getEnemy() << endl;
-    int round = 1;
-
-    while (true)
-    {
-        Player players[2] = {p1, p2};
-        cout << " \n<< Round " << round << " >>\n " << endl;
-        if (isWinner(players, 2))
-        {
-            break;
-        }
-        else
-        {
-            if (round % 2 == 0)
-            {
-                p1.chooseAction();
-            }
-            else
-            {
-                p2.chooseAction();
-            }
-        }
-        round++;
-    }
-}
 void displayPlayer(Player players[], int players_number)
 {
     printf("\e[35m");
@@ -111,6 +77,43 @@ void displayPlayer(Player players[], int players_number)
     }
     printf("\e[0m \n");
 }
+void twoPlayers_Mode()
+{
+    Player p1, p2;
+    system(" figlet -c -f bubble 'GAME STARTED'");
+    p1 = createPlayer(0);
+    p2 = createPlayer(1);
+    p1.setEnemy(&p2);
+    p2.setEnemy(&p1);
+    //cout << p1.getEnemy() << endl;
+    int round = 1;
+
+    while (true)
+    {
+        Player players[2] = {p1, p2};
+        cout << " \n     << Round " << round << " >>\n " << endl;
+        displayPlayer(players, 2);
+        if (isWinner(players, 2))
+        {
+            break;
+        }
+        else
+        {
+            if (round % 2 == 0)
+            {
+                cout << " \n-- Player " << p1.getName() << "  Turn --\n " << endl;
+                p1.chooseAction();
+            }
+            else
+            {
+                cout << " \n-- Player " << p2.getName() << "  Turn --\n " << endl;
+                p2.chooseAction();
+            }
+        }
+        round++;
+    }
+}
+
 void multiPlayers_Mode()
 {
     system(" figlet -c -f bubble 'GAME STARTED'");
@@ -158,7 +161,7 @@ void multiPlayers_Mode()
                 else
                 {
                     displayPlayer(players, players_number);
-                    cout << "\n << Round " << round << " >>\n " << endl;
+                    cout << "\n     << Round " << round << " >>\n " << endl;
                     players[i].chooseAction();
                     round++;
                 }

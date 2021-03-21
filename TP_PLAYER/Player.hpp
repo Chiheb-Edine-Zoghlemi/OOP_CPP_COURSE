@@ -48,7 +48,7 @@ public:
     void setScore(int arg_score);
     int getDamages();
     void setDamages(int arg_damages);
-    void setEnemy(Player arg_enemy);
+    void setEnemy(Player *arg_enemy);
     Player *getEnemy();
     bool isDead();
     void displayDamages();
@@ -109,9 +109,9 @@ int Player::getDamages()
     return damages;
 }
 //set enemy
-void Player::setEnemy(Player arg_enemy)
+void Player::setEnemy(Player *arg_enemy)
 {
-    enemy = &arg_enemy;
+    enemy = arg_enemy;
 }
 
 //get enemy
@@ -149,11 +149,11 @@ void Player::displayDamages()
 bool Player::attack()
 {
 
-    setScore(getScore() - damages);
+    enemy->setScore(enemy->getScore() - damages);
 
-    if (isDead() == false)
+    if (enemy->isDead() == false)
     {
-        displayScore();
+        enemy->displayScore();
         return false;
     }
     return true;

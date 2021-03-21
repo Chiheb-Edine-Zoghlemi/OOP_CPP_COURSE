@@ -51,10 +51,18 @@ bool isWinner(Player players[], int playersNumber)
     }
     if (deadPlayers == playersNumber - 1)
     {
-        string cmd = "figlet -c -f standard 'WINNER IS " + winner.getName() + "'";
-        char char_array[cmd.length() + 1];
-        strcpy(char_array, cmd.c_str());
-        system(char_array);
+        try
+        {
+            string cmd = "figlet -c -f standard 'WINNER IS " + winner.getName() + "'";
+            char char_array[cmd.length() + 1];
+            strcpy(char_array, cmd.c_str());
+            system(char_array);
+        }
+        catch (const std::exception &e)
+        {
+            cout << "The Winner Is " + winner.getName() + " " << endl;
+        }
+
         return true;
     }
     return false;
@@ -80,7 +88,14 @@ void displayPlayer(Player players[], int players_number)
 void twoPlayers_Mode()
 {
     Player p1, p2;
-    system(" figlet -c -f bubble 'GAME STARTED'");
+    try
+    {
+        system(" figlet -c -f bubble 'GAME STARTED'");
+    }
+    catch (...)
+    {
+        cout << "***** GAME STARTED *****" << endl;
+    }
     p1 = createPlayer(0);
     p2 = createPlayer(1);
     p1.setEnemy(&p2);
@@ -101,12 +116,12 @@ void twoPlayers_Mode()
         {
             if (round % 2 == 0)
             {
-                cout << " \n-- Player " << p1.getName() << "  Turn --\n " << endl;
+                cout << "\n\x1b[46m -- Player " << p1.getName() << "  Turn -- \033[0m\n " << endl;
                 p1.chooseAction();
             }
             else
             {
-                cout << " \n-- Player " << p2.getName() << "  Turn --\n " << endl;
+                cout << "\n\x1b[46m -- Player " << p2.getName() << "  Turn -- \033[0m\n " << endl;
                 p2.chooseAction();
             }
         }
@@ -116,15 +131,24 @@ void twoPlayers_Mode()
 
 void multiPlayers_Mode()
 {
-    system(" figlet -c -f bubble 'GAME STARTED'");
-    printf("\n\x1B[34mPlease Provide The Number Of Users\n");
+
+    try
+    {
+        system(" figlet -c -f bubble 'GAME STARTED'");
+    }
+    catch (...)
+    {
+        cout << "***** GAME STARTED *****" << endl;
+    }
+
+    printf("\n\x1B[34mPlease Provide The Number Of Players\n");
     int players_number;
     cout << "--> \033[0m ";
     // validate the that the user provided a valid number
     while (true)
     {
         cin >> players_number;
-        if (players_number <= 0)
+        if (players_number <= 2)
         {
             cout << "\e[33m Unvalid Choice ⚠️\e[0m" << endl;
         }
@@ -141,7 +165,7 @@ void multiPlayers_Mode()
         players[i] = createPlayer(i);
     }
     int round = 1;
-    bool done;
+    bool done = false;
     while (true)
     {
 
@@ -162,6 +186,27 @@ void multiPlayers_Mode()
                 {
                     displayPlayer(players, players_number);
                     cout << "\n     << Round " << round << " >>\n " << endl;
+                    cout << "\n\x1b[46m -- Player " << players[i].getName() << "  Turn -- \033[0m\n " << endl;
+                    printf("\n\x1B[34mChose You Enemy\n");
+                    int enemy_id;
+                    cout << "--> #\033[0m ";
+
+                    while (true)
+                    {
+
+                        cin >> enemy_id;
+                        if (enemy_id < 1 || enemy_id > players_number || enemy_id == i)
+                        {
+                            cout << "\e[33m Unvalid Choice ⚠️\e[0m" << endl;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                    players[i].setEnemy(&players[enemy_id - 1]);
                     players[i].chooseAction();
                     round++;
                 }
@@ -172,13 +217,20 @@ void multiPlayers_Mode()
 
 int main()
 {
-    //printf('\e[31m');
-    system("  figlet -c -f standard 'Death Match'");
-    //printf('\e[0m');
+    try
+    {
+        system("  figlet -c -f standard 'Death Match'");
+    }
+    catch (...)
+    {
+        cout << "******* DEATH MATCH *******" << endl;
+    }
+
     displayMenu();
     int choice;
     while (true)
     {
+        cout << "\n\x1B[34m--> \033[0m ";
         cin >> choice;
         switch (choice)
         {

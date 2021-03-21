@@ -172,7 +172,8 @@ void Player::chooseWeapon()
     cout << "#2 -- Axe 🪓" << endl;
     cout << "#3 -- Bomb 💣" << endl;
     cout << "#4 -- Bow 🏹" << endl;
-    while (!(cin >> choice))
+
+    while (!(cout << "\n\x1B[34m--> \033[0m " && cin >> choice))
     {
 
         if (choice == 1 or choice == 2 or choice == 3 or choice == 4)
@@ -204,6 +205,7 @@ void Player::chooseAction()
     int choice;
     while (true)
     {
+        cout << "\n\x1B[34m--> \033[0m ";
         cin >> choice;
         if (choice == 1)
         {

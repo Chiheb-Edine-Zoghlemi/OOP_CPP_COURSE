@@ -2,6 +2,7 @@
 using namespace std;
 int mystery_number()
 {
+
     const int CORRECT_NUMBER = rand() % 100 + 1;
     cout << "*** Welcome to Mystery Number ***" << endl;
     cout << "** Rules **\n# Guess a number between 1 -- 100 \n# You have 6 attempts \n# With each attempt u will be indicated if the correct number is lower or higher" << endl;

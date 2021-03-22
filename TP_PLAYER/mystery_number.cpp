@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 int mystery_number()
 {
@@ -7,16 +8,16 @@ int mystery_number()
     cout << "*** Welcome to Mystery Number ***" << endl;
     cout << "** Rules **\n# Guess a number between 1 -- 100 \n# You have 6 attempts \n# With each attempt u will be indicated if the correct number is lower or higher" << endl;
     int choice;
-    int i;
+
     //cout<<CORRECT_NUMBER<<endl;
-    for (i = 0; i < 6; i++)
+    for (int i = 0; i < 6; i++)
     {
         cout << "-- Attemp " << i + 1 << " --" << endl;
         cin >> choice;
         if (choice == CORRECT_NUMBER)
         {
             cout << "You Guessed it !" << endl;
-            return 6 - i + 1;
+            return (6 - i);
         }
         else if (choice < CORRECT_NUMBER)
         {
@@ -26,12 +27,14 @@ int mystery_number()
         {
             cout << "The correct number is lower" << endl;
         }
+        cin.clear();
     }
     return 0;
 }
 
 int main()
 {
-    mystery_number() ? cout << "You Won !" << endl : cout << "You Lost :( " << endl;
+    int score = mystery_number();
+    score ? cout << "You Won ! " << score << " " << endl : cout << "You Lost :( " << endl;
     return 0;
 }

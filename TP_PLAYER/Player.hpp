@@ -8,16 +8,15 @@ int mystery_number()
     cout << "*** Welcome to Mystery Number Challenge ***" << endl;
     cout << "** Rules **\n# Guess a number between 1 -- 100 \n# You have 6 attempts \n# With each attempt u will be indicated if the correct number is lower or higher\n#Reaming tries will be added to your score" << endl;
     int choice;
-    int i;
     //cout << CORRECT_NUMBER << endl;
-    for (i = 0; i < 6; i++)
+    for (int i = 0; i < 6; i++)
     {
         cout << "-- Attemp " << i + 1 << " --" << endl;
         cin >> choice;
         if (choice == CORRECT_NUMBER)
         {
             cout << "You Guessed it 🎉" << endl;
-            return 6 - i + 1;
+            return (6 - i);
         }
         else if (choice < CORRECT_NUMBER)
         {

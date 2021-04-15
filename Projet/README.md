@@ -1,7 +1,8 @@
 ﻿# Corpus Managment
-The fallowing Diagram is the class diagram used in this project 
-<img src='ClassDiagram.jpg'>
- (ClassDiagram.jpg)
+
+<img src='ClassDiagram.jpg'  alt="Class Digram"
+     style="float: left; margin-right: 50em;" >
+
 ## Requirement ( For best user experience )  
 - Linux Distribution  installed  ( Ubuntu Preference) 
 - G++ 

@@ -1,6 +1,7 @@
-﻿# Death Math
-
-Death match is a 2 player / multiplayer game, where players compete through challenges and attacks to gain more score . the last live player is the winner ( that s why i called it a death math ) 
+﻿# Corpus Managment
+The fallowing Diagram is the class diagram used in this project 
+<img src='ClassDiagram.jpg'>
+ (ClassDiagram.jpg)
 ## Requirement ( For best user experience )  
 - Linux Distribution  installed  ( Ubuntu Preference) 
 - G++ 
@@ -9,7 +10,7 @@ Death match is a 2 player / multiplayer game, where players compete through chal
 >sudo apt install figlet 
 ## How to run the program 
 
->./main
+>./Main
 
 ### Contact infos
 - Linkdin : https://www.linkedin.com/in/chihebedinezoghlemi/

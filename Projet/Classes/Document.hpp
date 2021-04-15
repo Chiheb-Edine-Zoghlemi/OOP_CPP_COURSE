@@ -1,10 +1,17 @@
 #include <iostream>
-#include <limits>
+#include "Word.hpp"
+#include <bits/stdc++.h>
+
 using namespace std;
 class Document
 {
 private:
-    /* data */
+    int id;
+    string name;
+    string content;
+    int nb_words;
+    vector<Word> words;
+
 public:
     Document(/* args */);
     ~Document();

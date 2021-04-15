@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include "Document.hpp"
 using namespace std;
 class Corpus
 {

@@ -1,5 +1,5 @@
 #include <iostream>
-#include <./Classes/Corpus.hpp>
+#include "./Classes/Corpus.hpp"
 #include <cstring>
 using namespace std;
 
@@ -9,9 +9,9 @@ void displayMenu()
     cout << "\t\t\t===========================" << endl;
     cout << "\t\t\t\t     MENU" << endl;
     cout << "\t\t\t===========================" << endl;
-    cout << "\t\t\t2 PLAYERS MODE          || 1" << endl;
-    cout << "\t\t\tMULTI PLAYERS MODE      || 2" << endl;
-    cout << "\t\t\tEXIT                    || 3" << endl;
+    cout << "\t\t\tDisplay Corpus List        || 1" << endl;
+    cout << "\t\t\tSelect Corpus              || 2" << endl;
+    cout << "\t\t\tEXIT                       || 3" << endl;
     cout << "\t\t\t===========================" << endl;
     printf("\e[0m");
 }
@@ -31,11 +31,11 @@ int main()
 {
     try
     {
-        system("  figlet -c -f standard 'Death Match'");
+        system("  figlet -c -f standard 'Corpus Manager'");
     }
     catch (...)
     {
-        cout << "******* DEATH MATCH *******" << endl;
+        cout << "******* CORPUS MANAGER *******" << endl;
     }
 
     displayMenu();

@@ -6,13 +6,13 @@ using namespace std;
 void displayMenu()
 {
     printf("\e[31m");
-    cout << "\t\t\t===========================" << endl;
+    cout << "\t\t\t================================" << endl;
     cout << "\t\t\t\t     MENU" << endl;
-    cout << "\t\t\t===========================" << endl;
+    cout << "\t\t\t================================" << endl;
     cout << "\t\t\tDisplay Corpus List        || 1" << endl;
     cout << "\t\t\tSelect Corpus              || 2" << endl;
     cout << "\t\t\tEXIT                       || 3" << endl;
-    cout << "\t\t\t===========================" << endl;
+    cout << "\t\t\t================================" << endl;
     printf("\e[0m");
 }
 void Credit()

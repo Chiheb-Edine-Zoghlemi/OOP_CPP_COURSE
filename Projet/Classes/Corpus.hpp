@@ -5,14 +5,36 @@ using namespace std;
 class Corpus
 {
 private:
-    /* data */
+    int id;
+    string name;
+    int nb_documents;
+    vector<Document> documents;
+
 public:
-    Corpus(/* args */);
+    Corpus(int arg_id, string arg_name);
+    int get_id();
+    string get_name();
+    int get_number_documents();
+    void add_document();
+    void remove_docuement(int id);
+    void display_document(int id);
+    void search(string word);
+    void get_distance(int id_doc1, int id_doc2);
     ~Corpus();
 };
 
-Corpus::Corpus(/* args */)
+Corpus::Corpus(int arg_id, string arg_name)
 {
+}
+
+int Corpus::get_id()
+{
+    return id;
+}
+
+string Corpus::get_name()
+{
+    return name;
 }
 
 Corpus::~Corpus()

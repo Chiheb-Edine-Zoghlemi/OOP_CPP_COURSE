@@ -1,9 +1,9 @@
-﻿# this work is still under construction !
+﻿# This work is still under construction !
 
 # Corpus Managment
 
 <img src='ClassDiagram.jpg'  alt="Class Digram"
-     style="float: left; margin-right: 50em;" >
+     style="float: center; " >
 
 ## Requirement ( For best user experience )
 

@@ -3,6 +3,42 @@
 #include <cstring>
 using namespace std;
 
+void display_sub_menu(Corpus c)
+{
+    printf("\e[31m");
+    cout << "\t\t\t================================" << endl;
+    cout << "\t\t\t\t     Corpus #" << c.get_id() << " --- " << c.get_name() << endl;
+    cout << "\t\t\t================================" << endl;
+    cout << "\t\t\tDisplay Documents List        || 1" << endl;
+    cout << "\t\t\tDisplay Document              || 2" << endl;
+    cout << "\t\t\tRemove Document               || 3" << endl;
+    cout << "\t\t\tADD Document                  || 4" << endl;
+    cout << "\t\t\tEXIT                          || 5" << endl;
+    cout << "\t\t\t================================" << endl;
+    printf("\e[0m");
+
+    int choice;
+    while (true)
+    {
+        cout << "\n\x1B[34m--> \033[0m ";
+        cin >> choice;
+        switch (choice)
+        {
+        case 3:
+            break;
+        case 1:
+
+            break;
+        case 2:
+            break;
+
+        default:
+            cout << "\e[33m Unvalid Choice ⚠️\e[0m" << endl;
+        }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+}
 void displayMenu()
 {
     printf("\e[31m");

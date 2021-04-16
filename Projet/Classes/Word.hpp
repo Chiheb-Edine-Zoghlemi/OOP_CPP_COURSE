@@ -15,6 +15,10 @@ public:
     int get_occurence();
     string get_word();
     int get_id();
+    bool operator<(const Word &str) const
+    {
+        return (occurence < str.occurence);
+    }
     ~Word();
 };
 
